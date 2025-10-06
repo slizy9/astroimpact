@@ -15,7 +15,7 @@ export function AsteroidsSection() {
 
   useEffect(() => {
     const getKey = () => {
-      const key = process.env.NEXT_PUBLIC_NASA_API_KEY as string | undefined;
+      const key = process.env.NEXT_PUBLIC_NASA_API_KEY as string | 'hULULcHli49Tkkbqtt4vzFG6aOUhTDudC0Pe8zY';
       if (!key) {
         console.warn('NEXT_PUBLIC_NASA_API_KEY is not set. Falling back to DEMO_KEY with rate limits.');
         return 'DEMO_KEY';
