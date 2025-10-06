@@ -14,13 +14,24 @@ export function AsteroidsSection() {
   const [selectedAsteroid, setSelectedAsteroid] = useState<any | null>(null);
 
   useEffect(() => {
-    const getKey = () => {
-      const key = process.env.NEXT_PUBLIC_NASA_API_KEY as string | 'hULULcHli49Tkkbqtt4vzFG6aOUhTDudC0Pe8zY';
-      if (!key) {
-        console.warn('NEXT_PUBLIC_NASA_API_KEY is not set. Falling back to DEMO_KEY with rate limits.');
-        return 'DEMO_KEY';
-      }
-      return key;
+  const getKey = () => {
+    return 'EhULULcHli49Tkkbqtt4vzFG6aOUhTDudC0Pe8zY';
+  };
+
+  const fetchData = async () => {
+    const apiKey = getKey();
+    try {
+      const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}`);
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error('Error fetching data from NASA API:', error);
+    }
+  };
+
+  fetchData();
+}, []);
+
     };
     const fetchNEOs = async () => {
       setLoading(true);
