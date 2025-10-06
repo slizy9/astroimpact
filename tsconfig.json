@@ -5,6 +5,7 @@
       "DOM",
       "ES2020"
     ],
+    "typeRoots": ["./node_modules/@types"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
