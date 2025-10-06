@@ -14,12 +14,17 @@ export function AsteroidsSection() {
   const [selectedAsteroid, setSelectedAsteroid] = useState<any | null>(null);
 
   useEffect(() => {
-    const getKey = () => {
-      const key = process.env.NEXT_PUBLIC_NASA_API_KEY as string | undefined;
-      if (!key) {
-        console.warn('NEXT_PUBLIC_NASA_API_KEY is not set. Falling back to DEMO_KEY with rate limits.');
-        return 'DEMO_KEY';
-      }
+  const getKey = () => {
+    const key = 'EhULULcHli49Tkkbqtt4vzFG6aOUhTDudC0Pe8zY'; // 👈 Reemplaza esto con tu clave real de NASA
+    return key;
+  };
+
+  const apiKey = getKey();
+
+  // Aquí puedes usar apiKey para hacer tu fetch
+  console.log('Usando API Key:', apiKey);
+}, []);
+
       return key;
     };
     const fetchNEOs = async () => {
