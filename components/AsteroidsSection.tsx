@@ -14,7 +14,14 @@ export function AsteroidsSection() {
   const [selectedAsteroid, setSelectedAsteroid] = useState<any | null>(null);
 
   useEffect(() => {
-    const getKey = () => (process.env.NEXT_PUBLIC_NASA_API_KEY as string) || 'EhULULcHli49Tkkbqtt4vzFG6aOUhTDudC0Pe8zY' || 'DEMO_KEY';
+    const getKey = () => {
+      const key = process.env.NEXT_PUBLIC_NASA_API_KEY as string | undefined;
+      if (!key) {
+        console.warn('NEXT_PUBLIC_NASA_API_KEY is not set. Falling back to DEMO_KEY with rate limits.');
+        return 'DEMO_KEY';
+      }
+      return key;
+    };
     const fetchNEOs = async () => {
       setLoading(true);
       setError(null);
